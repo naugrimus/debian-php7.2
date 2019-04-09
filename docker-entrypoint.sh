@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 USER_ID=`id -u`
 GROUP_ID=`id -g`
@@ -9,10 +9,10 @@ if ! grep "^[^:]*:x:$USER_ID:.*$" /etc/passwd > /dev/null 2>/dev/null; then
     sudo mkdir -p /home/bazingar
 
     if ! grep "^[^:]*:x:$GROUP_ID:$" /etc/group > /dev/null 2>/dev/null; then
-        echo "pv:x:$GROUP_ID:" >> /etc/group
+        echo "bmtg:x:$GROUP_ID:" >> /etc/group
     fi
 
-    sudo chown -R "$USER_ID:$GROUP_ID" /home/pv
+    sudo chown -R "$USER_ID:$GROUP_ID" /home/bazingar
 fi
 
 sudo chmod go-w /etc/passwd
