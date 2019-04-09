@@ -79,6 +79,6 @@ RUN curl -L -s -o /usr/local/bin/composer https://getcomposer.org/download/$COMP
 COPY docker-entrypoint.sh /usr/local/bin
 RUN chmod a+rw /etc/passwd && chmod a+rw /etc/group
 RUN echo "bazingar ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/nopwsudo
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 WORKDIR /app
 	
