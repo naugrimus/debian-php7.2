@@ -31,6 +31,13 @@ RUN curl -s -L https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add 
         postgresql-client-$POSTGRESQL_VERSION \
     && rm -rf /var/lib/apt/lists/*
 
+# Install node.js
+ENV NODE_VERSION node_10.x
+RUN curl -s -L https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
+	&& echo "deb https://deb.nodesource.com/$NODE_VERSION stretch main" > /etc/apt/sources.list.d/nodesource.list \
+	nodejs \
+	&& rm -rf /var/lib/apt/lists/*
+
 
 	
 # Install PHP from sury.org packages
