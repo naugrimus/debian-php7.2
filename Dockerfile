@@ -35,9 +35,17 @@ RUN curl -s -L https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add 
 ENV NODE_VERSION node_10.x
 RUN curl -s -L https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
 	&& echo "deb https://deb.nodesource.com/$NODE_VERSION stretch main" > /etc/apt/sources.list.d/nodesource.list \
-	nodejs \
+ 	&& apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
+	   nodejs \
 	&& rm -rf /var/lib/apt/lists/*
 
+# install yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+	&& echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list \
+	&& apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
+		yarn \
+	&& rm -rf /var/lib/apt/lists/*
+	
 
 	
 # Install PHP from sury.org packages
