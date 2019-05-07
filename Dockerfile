@@ -21,6 +21,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install --no-instal
 		sudo \
 		vim \
 		wget \
+		net-tools\
 	&& rm -rf /var/lib/apt/lists/*
 
 # Install postgresql client
