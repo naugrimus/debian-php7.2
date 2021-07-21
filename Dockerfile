@@ -80,7 +80,7 @@ COPY files/php.ini /etc/php/${PHP_VERSION}/fpm/php.ini
 COPY files/php.ini /etc/php/${PHP_VERSION}/cli/php.ini
 
 # Install composer
-ENV COMPOSER_VERSION 1.6.5
+ENV COMPOSER_VERSION 2.1.3
 RUN curl -L -s -o /usr/local/bin/composer https://getcomposer.org/download/$COMPOSER_VERSION/composer.phar \
     && chmod a+x /usr/local/bin/composer
 # Setup entry script
